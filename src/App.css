@@ -9,6 +9,11 @@ body {
   background-color: rgb(12, 11, 11);
 }
 
+main {
+  min-height: 100vh;
+  background-color: rgb(12, 11, 11);
+}
+
 p {
   color: white
 }

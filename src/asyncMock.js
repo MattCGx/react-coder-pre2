@@ -160,7 +160,7 @@ const products = [
     category: "Impresoras",
     price: 390990,
     stock: 15,
-    img: "https://www.Impresorassonlinestore.com/image/cache/catalog/geeetech/a10m/main/2-825x1024-0.jpg",
+    img:"https://http2.mlstatic.com/D_NQ_NP_880692-MLA40670251576_022020-O.webp",
     description:
       "Impresora 3D FDM, volumen de impresión 220x220x260mm, cama caliente, autoleveling, extrusor Titan.",
   },
