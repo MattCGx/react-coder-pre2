@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, ButtonGroup } from "@nextui-org/react";
-import cart from "./assets/sh-cart.svg";
+
 
 const ItemCount = ({initial = 1, stock, onAdd }) => {
 
