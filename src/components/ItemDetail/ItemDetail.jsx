@@ -1,4 +1,6 @@
 import ItemCount from "../ItemCount/ItemCount";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -6,6 +8,7 @@ import {
   Image,
   CardFooter,
   Chip,
+  Button
 } from "@nextui-org/react";
 
 const ItemDetail = ({
@@ -17,6 +20,16 @@ const ItemDetail = ({
   description,
   category,
 }) => {
+
+const [quantityAdded, setQuantityAdded] = useState(0);
+
+const handleOnAdd =(quantity)=> {
+  setQuantityAdded(quantity)
+
+}
+
+
+
   return (
     <section className="flex justify-center">
       <Card className="shadow-lg shadow-indigo-700 py-3">
@@ -44,10 +57,29 @@ const ItemDetail = ({
             width={400}
           />
         </CardBody>
-        <CardFooter className="flex-col items-center">
+        <CardFooter className="flex flex-col items-center">
           <p className="text-default-500 w-96">{description}</p>
           <p className="text-2xl my-2">${price}</p>
-          <ItemCount stock={stock} />
+
+          {
+            quantityAdded > 0 ? ( 
+           <div className="flex flex-col items-center gap-1">
+             <Link to='/cart'>
+                 <Button className="text-center text-sm" size="sm" color="success" variant="bordered">Terminar Compra</Button>
+                 </Link>
+                 <Button className="text-center text-sm" size="sm" color="danger" variant="light">cancelar compra</Button>
+           </div>
+                
+                )
+            :(
+
+            <ItemCount stock={stock} onAdd={handleOnAdd}/> )
+
+          }
+
+          
+
+
         </CardFooter>
       </Card>
     </section>
