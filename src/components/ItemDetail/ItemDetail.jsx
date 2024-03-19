@@ -1,5 +1,6 @@
 import ItemCount from "../ItemCount/ItemCount";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -8,27 +9,23 @@ import {
   Image,
   CardFooter,
   Chip,
-  Button
+  Button,
 } from "@nextui-org/react";
 
-const ItemDetail = ({
-  model,
-  brand,
-  price,
-  img,
-  stock,
-  description,
-  category,
-}) => {
+const ItemDetail = ({id,model,brand,price,img,stock,description,category,}) => {
 
-const [quantityAdded, setQuantityAdded] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
-const handleOnAdd =(quantity)=> {
-  setQuantityAdded(quantity)
+  const { addItem } = useContext(CartContext);
 
-}
+  const handleOnAdd = (quantity) => {
+    const objProductToAdd = { id, brand, model, price, quantity };
+    setQuantity(quantity);
 
+    addItem(objProductToAdd);
+  };
 
+  
 
   return (
     <section className="flex justify-center">
@@ -61,25 +58,30 @@ const handleOnAdd =(quantity)=> {
           <p className="text-default-500 w-96">{description}</p>
           <p className="text-2xl my-2">${price}</p>
 
-          {
-            quantityAdded > 0 ? ( 
-           <div className="flex flex-col items-center gap-1">
-             <Link to='/cart'>
-                 <Button className="text-center text-sm" size="sm" color="success" variant="bordered">Terminar Compra</Button>
-                 </Link>
-                 <Button className="text-center text-sm" size="sm" color="danger" variant="light">cancelar compra</Button>
-           </div>
-                
-                )
-            :(
-
-            <ItemCount stock={stock} onAdd={handleOnAdd}/> )
-
-          }
-
-          
-
-
+          {quantity > 0 ? (
+            <div className="flex flex-col items-center gap-1">
+              <Link to="/cart">
+                <Button
+                  className="text-center text-sm"
+                  size="sm"
+                  color="success"
+                  variant="bordered"
+                >
+                  Terminar Compra
+                </Button>
+              </Link>
+              {/*<Button
+                className="text-center text-sm"
+                size="sm"
+                color="danger"
+                variant="light"
+              >
+                cancelar compra
+          </Button>*/}
+            </div>
+          ) : (
+            <ItemCount stock={stock} onAdd={handleOnAdd} />
+          )}
         </CardFooter>
       </Card>
     </section>

@@ -41,7 +41,7 @@ const NavbarContainer = () => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <CartWidget cartCount="0"/>
+          <CartWidget/>
         </NavbarItem>
       </NavbarContent>
     </Navbar>

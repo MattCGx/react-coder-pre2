@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState} from "react";
 import { Button, ButtonGroup } from "@nextui-org/react";
+
 
 
 const ItemCount = ({initial = 1, stock, onAdd }) => {
 
     const [count, setCount] = useState(initial)
+
+
 
     const decrement = () => {
         if(count >1) {
