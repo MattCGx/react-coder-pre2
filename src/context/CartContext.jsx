@@ -3,15 +3,15 @@ import { useState, createContext } from "react"
 
 export const CartContext = createContext();
 
-export const CartProvider =({Children})=> {
+export const CartProvider =({children})=> {
 
     const [cart, setCart] = useState([])
 
     console.log("carrito:", cart)
   
-    const addItem = (ProductToAdd) => {
-      if(!isInCart(ProductToAdd.id)){
-        setCart(prev => [... prev, ProductToAdd])
+    const addItem = (productToAdd) => {
+      if(!isInCart(productToAdd.id)){
+        setCart(prev => [... prev, productToAdd])
       }else{
         console.error("el producto ya está en el carrito")
       }
@@ -38,7 +38,7 @@ export const CartProvider =({Children})=> {
    return (
 
     <CartContext.Provider value={{cart, addItem, totalQuantity}}>
-        {Children}
+        {children}
     </CartContext.Provider>
    ) 
 }
