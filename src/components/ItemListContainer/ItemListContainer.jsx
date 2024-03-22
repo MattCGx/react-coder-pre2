@@ -13,7 +13,7 @@ const ItemListContainer = ({ greeting, greetingFiltro }) => {
     const asyncFunction = categoryId ? getProductsByCategory : getProducts
 
     asyncFunction(categoryId)
-      .then((result) => {
+      .then(result => {
         setProducts(result);
     });
   }, [categoryId]);
