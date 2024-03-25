@@ -33,7 +33,7 @@ const ItemDetailContainer = () => {
       <h1 className="text-center text-cyan-400 text-2xl">
         Detalle del Producto
       </h1>
-        <ItemDetail {... product} />
+        <ItemDetail {...product} />
     </main>
   );
 };
