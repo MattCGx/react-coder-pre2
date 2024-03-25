@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
+import { ItemSkeleton } from '../skeletons/ItemSkeleton';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../services/FirebaseDB/firebaseConfig';
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   const {itemId} = useParams()
 
   useEffect(() => {
@@ -20,7 +21,12 @@ const ItemDetailContainer = () => {
         setProduct(porductAdapted)
     })
     .catch()
+    .finally(()=> setLoading(false))
   }, [itemId]);
+
+  if(loading) {
+    return <ItemSkeleton/>
+  }
 
   return (
     <main>

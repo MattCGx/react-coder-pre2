@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
+import { ItemListSkeleton } from "../skeletons/ItemListSkeleton";
 import { getDocs, collection, query, where} from "firebase/firestore";
 import { db } from "../../services/FirebaseDB/firebaseConfig";
 
 const ItemListContainer = ({ greeting, greetingFiltro }) => {
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true);
 
   const {categoryId} = useParams()
 
@@ -22,8 +24,13 @@ const ItemListContainer = ({ greeting, greetingFiltro }) => {
          setProducts(productsAdatpted)
         })
         .catch(error => console.error(error))
+        .finally(()=> setLoading(false))
   
   }, [categoryId]);
+
+  if(loading) {
+    return <ItemListSkeleton/>
+  }
 
   return (
     <main>
