@@ -1,17 +1,13 @@
+import { 
+  collection,
+  addDoc,
+} from 'firebase/firestore'
+import { db } from '../../services/FirebaseDB/firebaseConfig';
+
+
+
 const products = [
-  {
-    id:"1",
-    brand: "Creality",
-    model: "Ender 3 V2",
-    category: "Impresoras",
-    price: 290990,
-    stock: 20,
-    img: "https://proyectocolor.com.ar/wp-content/uploads/2021/09/Mesa-de-trabajo-1-100-26.jpg",
-    description:
-      "Impresora 3D FDM, volumen de impresión 220x220x250mm, cama caliente, autoleveling.",
-  },
-  {
-    id:"2",
+   {
     brand: "Creality",
     model: "Ender 3 S1",
     category: "Impresoras",
@@ -22,7 +18,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 220x220x270mm, cama caliente, doble eje Z, pantalla táctil.",
   },
   {
-    id:"3",
     brand: "Creality",
     model: "Ender 5 Plus",
     category: "Impresoras",
@@ -33,7 +28,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 350x350x400mm, cama caliente, doble eje Z, extrusión directa.",
   },
   {
-    id:"4",
     brand: "Artillery",
     model: "Genius Pro",
     category: "Impresoras",
@@ -44,7 +38,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 220x220x250mm, cama caliente, autoleveling, extrusor Titan.",
   },
   {
-    id:"5",
     brand: "Artillery",
     model: "Sidewinder X2",
     category: "Impresoras",
@@ -55,7 +48,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 300x300x400mm, cama caliente, doble eje Z, extrusión directa.",
   },
   {
-    id:"6",
     brand: "Anycubic",
     model: "Mega X",
     category: "Impresoras",
@@ -66,7 +58,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 210x210x205mm, cama caliente, autoleveling, extrusor Titan.",
   },
   {
-    id:"7",
     brand: "Anycubic",
     model: "Vyper",
     category: "Impresoras",
@@ -77,7 +68,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 245x245x260mm, cama caliente, autoleveling, extrusor Volcano, alta velocidad.",
   },
   {
-    id:"8",
     brand: "Prusa Research",
     model: "Original Prusa i3 MK3S+",
     category: "Impresoras",
@@ -88,7 +78,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 250x210x210mm, cama magnética MK52, autoleveling SuperPINDA, sensor de filamento, electrónica Einsy Rambo 2.0.",
   },
   {
-    id:"9",
     brand: "Prusa Research",
     model: "Prusa Mini+",
     category: "Impresoras",
@@ -99,7 +88,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 180x180x250mm, cama magnética, autoleveling, sensor de filamento.",
   },
   {
-    id:"10",
     brand: "Elegoo",
     model: "Neptune 3 Pro",
     category: "Impresoras",
@@ -110,7 +98,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 220x220x280mm, cama caliente, autoleveling, extrusor Titan.",
   },
   {
-    id:"11",
     brand: "Elegoo",
     model: "Mars 3 Pro",
     category: "Impresoras",
@@ -121,7 +108,6 @@ const products = [
       "Impresora 3D MSLA, volumen de impresión 143x90x165mm, alta velocidad, precisión y calidad de impresión.",
   },
   {
-    id:"12",
     brand: "Anycubic",
     model: "Photon Mono X",
     category: "Impresoras",
@@ -132,7 +118,6 @@ const products = [
       "Impresora 3D MSLA, volumen de impresión 192x120x245mm, alta velocidad, precisión y calidad de impresión.",
   },
   {
-    id:"13",
     brand: "Creality",
     model: "Halot One",
     category: "Impresoras",
@@ -143,7 +128,6 @@ const products = [
       "Impresora 3D MSLA, volumen de impresión 192x120x250mm, alta velocidad, precisión y calidad de impresión.",
   },
   {
-    id:"14",
     brand: "Flashforge",
     model: "Adventurer 3 Lite",
     category: "Impresoras",
@@ -154,7 +138,6 @@ const products = [
       "Impresora 3D FDM, volumen de impresión 150x150x150mm, cama caliente, fácil de usar, ideal para principiantes.",
   },
   {
-    id:"15",
     brand: "Geeetech",
     model: "A10M",
     category: "Impresoras",
@@ -164,18 +147,7 @@ const products = [
     description:
       "Impresora 3D FDM, volumen de impresión 220x220x260mm, cama caliente, autoleveling, extrusor Titan.",
   },
-  {
-    id:"16",
-    brand: "Grilon",
-    model: "PLA Filament",
-    category: "Insumos",
-    price: 15900,
-    stock: 50,
-    img: "https://grilon3.com.ar/wp-content/uploads/2020/09/pla_azul.jpg",
-    description: "Filamento PLA para impresión 3D, 1kg, color blanco.",
-  },
-  {
-    id:"17",    
+  {  
     brand: "Anycubic",
     model: "Tough Resin",
     category: "Insumos",
@@ -185,8 +157,7 @@ const products = [
     description:
       "Resina para impresión 3D, 500ml, color gris, resistente a la rotura.",
   },
-  {
-    id:"18",    
+  {  
     brand: "Elegoo",
     model: "ABS Like Resin",
     category: "Insumos",
@@ -195,8 +166,7 @@ const products = [
     img: "https://www.elegoo.com/cdn/shop/products/0_c5f0c310-aa9b-4553-a0d8-dec596dd4672.jpg?v=1671070049",
     description: "Resina para impresión 3D, 500ml, color gris, similar al ABS.",
   },
-  {
-    id:"19",    
+  {  
     brand: "GST 3D",
     model: "PLA Filament",
     category: "Insumos",
@@ -206,7 +176,7 @@ const products = [
     description: "Filamento PLA para impresión 3D, 1kg, multicolor.",
   },
   {
-    id:"20",    
+      
     brand: "Printalot",
     model: "PLA Filament",
     category: "Insumos",
@@ -216,7 +186,7 @@ const products = [
     description: "Filamento PLA para impresión 3D, 1kg, color negro.",
   },
   {
-    id:"21",    
+   
     brand: "Flashforge",
     model: "Photocentric Resin",
     category: "Insumos",
@@ -226,7 +196,7 @@ const products = [
     description: "Resina para impresión 3D, 500ml, color gris, alta precisión.",
   },
   {
-    id:"22",    
+   
     brand: "Hellbot",
     model: "PLA Filament",
     category: "Insumos",
@@ -236,7 +206,7 @@ const products = [
     description: "Filamento PLA para impresión 3D, 1kg, color gris, económico.",
   },
   {
-    id:"23",    
+    
     brand: "Creality",
     model: "Ender 3 Hotend Kit",
     category: "repuestos",
@@ -246,17 +216,7 @@ const products = [
     description: "Kit de repuesto para el hotend de la impresora 3D Ender 3.",
   },
   {
-    id:"24",
-    brand: "Anycubic",
-    model: "Mega S LCD Screen",
-    category: "repuestos",
-    price: 34900,
-    stock: 15,
-    img: "https://udvabony.com/wp-content/uploads/2020/06/Controller-RAMPS-1-4-LCD-12864-Display-blue-screen-Cable-For-CREALITY-3D-Ender-3-Ender.jpg_640x640.jpg",
-    description: "Pantalla LCD de repuesto para la impresora 3D Mega S.",
-  },
-  {
-    id:"25",
+   
     brand: "Prusa Research",
     model: "MK3S+ SuperPINDA Sensor",
     category: "repuestos",
@@ -266,7 +226,7 @@ const products = [
     description: "Sensor SuperPINDA de repuesto para la impresora 3D MK3S+.",
   },
   {
-    id:"26",
+ 
     brand: "Elegoo",
     model: "Mars UV Resin Vat",
     category: "repuestos",
@@ -276,7 +236,7 @@ const products = [
     description: "Cuba de resina UV de repuesto para la impresora 3D Mars.",
   },
   {
-    id:"27",
+
     brand: "Flashforge",
     model: "Finder FDM Nozzle",
     category: "repuestos",
@@ -286,7 +246,7 @@ const products = [
     description: "Boquilla FDM de repuesto para la impresora 3D Finder.",
   },
   {
-    id:"28",
+
     brand: "Grilon",
     model: "PTFE Bowden Tube",
     category: "repuestos",
@@ -296,7 +256,7 @@ const products = [
     description: "Tubo Bowden de PTFE de repuesto para impresoras 3D.",
   },
   {
-    id:"29",
+
     brand: "Creality",
     model: "Build Plate",
     category: "repuestos",
@@ -307,26 +267,28 @@ const products = [
   },
 ];
 
-export const getProducts = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(products);
-    }, 100);
-  });
+
+
+const addProduct = (newProduct) => 
+{
+  return new Promise((resolve, reject) =>
+   {
+      const collectionRef = collection(db, 'products')
+
+      addDoc(collectionRef, newProduct)
+          .then(({ id }) => {
+              resolve(id)
+          })
+          .catch(error => {
+              reject(error)
+          })
+  })
+}
+
+export const uploadProducts = () =>
+ {
+  for (const product of products) {
+   addProduct(product);
+  }
 };
 
-export const getProductsByCategory = (categoryID) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(products.filter((prod) => prod.category === categoryID));
-    }, 500);
-  });
-};
-
-export const getProductById = (itemId) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(products.find((prod) => prod.id === itemId));
-    }, 100);
-  });
-};
