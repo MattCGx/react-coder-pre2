@@ -3,7 +3,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Button,
 } from "@nextui-org/react";
 import CartWidget from "../CartWidget/CartWidget"; 
 import { Link } from "react-router-dom";
@@ -19,23 +18,23 @@ const NavbarContainer = () => {
       <NavbarContent className="flex gap-4" justify="center">
         <NavbarItem>
           <Link to="/category/Impresoras">
-            <Button className="hover:shadow-lg focus:shadow-indigo-500/50" variant="ghost" color="primary">
+            <button  className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50" color="primary">
               Impresoras
-            </Button>
+            </button>
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link to="/category/Insumos">
-            <Button className="hover:shadow-lg focus:shadow-indigo-500/50" variant="ghost" color="primary">
+            <button className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50 " color="primary">
               Insumos
-            </Button>
+            </button>
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link to="/category/repuestos">
-            <Button className="hover:shadow-lg focus:shadow-indigo-500/50" variant="ghost" color="primary">
+            <button className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50" color="primary">
               Repuestos
-            </Button>
+            </button>
           </Link>
         </NavbarItem>
       </NavbarContent>

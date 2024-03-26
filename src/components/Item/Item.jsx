@@ -1,4 +1,4 @@
-import { Card, CardFooter, CardBody, Image, Button } from "@nextui-org/react";
+import { Card, CardFooter, CardBody, Image,} from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
 const Item = ({id, model, brand, price, img}) => {
@@ -23,14 +23,10 @@ const Item = ({id, model, brand, price, img}) => {
       <CardFooter className="text-small justify-around">
         <p className="text-default-500">${price}</p>
         <Link to={`/item/${id}`}>
-          <Button
-            className="text-tiny text-white bg-black/20 hover:bg-green-800"
-            variant="bordered"
-            color="success"
-            radius="lg"
-            size="sm"
+        <button
+            className="buttonGhostGreen text-tiny py-1 px-2"
           >Ver Detalle
-          </Button>
+          </button>
         </Link>
       </CardFooter>
     </Card>

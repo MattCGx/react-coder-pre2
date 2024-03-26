@@ -9,7 +9,6 @@ import {
   Image,
   CardFooter,
   Chip,
-  Button,
 } from "@nextui-org/react";
 
 const ItemDetail = ({id,model,brand,price,img,stock,description,category,}) => {
@@ -61,14 +60,11 @@ const ItemDetail = ({id,model,brand,price,img,stock,description,category,}) => {
           {quantity > 0 ? (
             <div className="flex flex-col items-center gap-1">
               <Link to="/cart">
-                <Button
-                  className="text-center text-sm"
-                  size="sm"
-                  color="success"
-                  variant="bordered"
+                <button
+                  className="buttonGhostGreen text-green-600 text-center text-sm py-1 px-2"
                 >
                   Terminar Compra
-                </Button>
+                </button>
               </Link>
               {/*<Button
                 className="text-center text-sm"
