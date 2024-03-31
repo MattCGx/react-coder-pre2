@@ -22,24 +22,49 @@ export const CartProvider =({children})=> {
     const isInCart =(id) => {
       return cart.some(prod => prod.id ===id)
     }
-  
-  
-    const getTotalQuantity = () => {
-  
-      let accumulator = 0
-  
-      cart.forEach(prod=>{
-        accumulator += prod.quantity
-      })
-  
-      return accumulator
+
+    const eraseCart = () => {
+      setCart([])
     }
   
-    const totalQuantity = getTotalQuantity()
+    const eraseItem = (id) => {
+      const updatedCart = cart.filter(prod => prod.id !== id)
+      setCart(updatedCart)
+    }
+
+
+    const getTotalQuantity = () => {
+  
+      let quantityAccumulator = 0
+  
+      cart.forEach(prod=>{
+        quantityAccumulator += prod.quantity
+      })
+  
+      return quantityAccumulator
+    }
+  
+    const totalQuantity = getTotalQuantity();
+
     
+    const getTotalPrice = () => {
+      let totalPriceAccumulator = 0
+      
+      cart.forEach(prod => {
+        totalPriceAccumulator += prod.quantity * prod.price
+      })
+
+      return totalPriceAccumulator
+
+    }
+
+    const totalPrice = getTotalPrice();
+
+
+
    return (
 
-    <CartContext.Provider value={{cart, addItem, totalQuantity}}>
+    <CartContext.Provider value={{cart, addItem, totalQuantity, eraseCart, eraseItem, totalPrice}}>
         {children}
     </CartContext.Provider>
    ) 

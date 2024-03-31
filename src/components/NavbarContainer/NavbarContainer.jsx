@@ -17,24 +17,18 @@ const NavbarContainer = () => {
       </NavbarBrand>
       <NavbarContent className="flex gap-4" justify="center">
         <NavbarItem>
-          <Link to="/category/Impresoras">
-            <button  className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50" color="primary">
+          <Link to="/category/Impresoras" className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50">
               Impresoras
-            </button>
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/category/Insumos">
-            <button className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50 " color="primary">
+          <Link to="/category/Insumos" className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50">
               Insumos
-            </button>
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/category/repuestos">
-            <button className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50" color="primary">
-              Repuestos
-            </button>
+          <Link to="/category/repuestos" className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50">           
+              Repuestos           
           </Link>
         </NavbarItem>
       </NavbarContent>

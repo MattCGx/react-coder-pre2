@@ -18,15 +18,25 @@ p {
   color: white
 }
 
-.buttonGhostBlue {
-  @apply bg-transparent text-blue-500 border-2 border-blue-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-blue-400 hover:text-white
-}
+
 
 .buttonCart {
   @apply flex flex-row bg-green-500 text-black px-4 py-2 rounded-[12px] border-2 border-white shadow-md w-full hover:bg-green-600 justify-between
 }
 
+.buttonErase {
+  @apply flex flex-row bg-red-500 text-black px-1 py-0 rounded-[12px] border-2 border-red-800 shadow-md w-fit hover:bg-red-600
+}
+
 .buttonGhostGreen {
   @apply bg-transparent text-white border-2 border-green-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-green-800 hover:text-white
+}
+
+.buttonGhostBlue {
+  @apply bg-transparent text-blue-500 border-2 border-blue-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-blue-400 hover:text-white
+}
+
+.buttonGhostRed {
+  @apply bg-transparent text-white border-2 border-red-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-red-800 hover:text-white
 }
 
