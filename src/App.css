@@ -15,17 +15,16 @@ main {
 }
 
 p {
-  color: white
+  @apply text-white align-middle text-center
 }
-
 
 
 .buttonCart {
-  @apply flex flex-row bg-green-500 text-black px-4 py-2 rounded-[12px] border-2 border-white shadow-md w-full hover:bg-green-600 justify-between
+  @apply flex flex-row bg-green-500 text-black px-4 py-2 rounded-[12px] border-2 border-white shadow-md w-full hover:bg-green-600
 }
 
 .buttonErase {
-  @apply flex flex-row bg-red-500 text-black px-1 py-0 rounded-[12px] border-2 border-red-800 shadow-md w-fit hover:bg-red-600
+  @apply flex flex-row bg-red-500 text-black px-1 py-0 rounded-[12px] border-2 border-red-800 w-fit hover:bg-red-600 
 }
 
 .buttonGhostGreen {
@@ -38,5 +37,11 @@ p {
 
 .buttonGhostRed {
   @apply bg-transparent text-white border-2 border-red-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-red-800 hover:text-white
+}
+
+.cardItemCart {
+  
+  @apply bg-slate-600 rounded-md hover:shadow-md hover:shadow-slate-400
+
 }
 

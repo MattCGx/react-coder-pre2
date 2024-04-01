@@ -9,7 +9,7 @@ const { totalQuantity } = useContext(CartContext)
 
   return ( 
     <Link to="/cart">
-      <button  className="buttonCart text-center font-bold text-xl" >
+      <button  className="buttonCart justify-between text-center font-bold text-xl" >
         {totalQuantity}
         <img className="w-7" src={cart}/>
       </button> 
