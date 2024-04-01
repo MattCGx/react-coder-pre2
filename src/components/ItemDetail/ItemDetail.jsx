@@ -11,7 +11,7 @@ import {
   Chip,
 } from "@nextui-org/react";
 
-const ItemDetail = ({id,model,brand,price,img,stock,description,category,}) => {
+const ItemDetail = ({id,model,brand,price,img,stock,description,category}) => {
 
   const [quantity, setQuantity] = useState(0);
 
@@ -59,21 +59,13 @@ const ItemDetail = ({id,model,brand,price,img,stock,description,category,}) => {
 
           {quantity > 0 ? (
             <div className="flex flex-col items-center gap-1">
-              <Link to="/cart">
-                <button
-                  className="buttonGhostGreen text-green-600 text-center text-sm py-1 px-2"
-                >
-                  Terminar Compra
-                </button>
+              <Link className="buttonGhostGreen text-green-600 text-center text-sm py-1 px-2" to="/cart">
+                  Terminar Compra                
               </Link>
-              {/*<Button
-                className="text-center text-sm"
-                size="sm"
-                color="danger"
-                variant="light"
-              >
-                cancelar compra
-          </Button>*/}
+              <Link className="text-green-600 text-center text-sm py-1 px-2" to="/">
+                  Seguir comprando            
+              </Link>
+          
             </div>
           ) : (
             <ItemCount stock={stock} onAdd={handleOnAdd} />
