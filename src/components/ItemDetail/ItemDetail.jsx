@@ -48,7 +48,7 @@ const ItemDetail = ({id,model,brand,price,img,stock,description,category}) => {
           <Image
             isBlurred
             isZoomed
-            className="object-cover rounded-xl"
+            className="object-cover rounded-xl max-h-[400px]"
             src={img}
             width={400}
           />
@@ -68,7 +68,7 @@ const ItemDetail = ({id,model,brand,price,img,stock,description,category}) => {
           
             </div>
           ) : (
-            <ItemCount stock={stock} onAdd={handleOnAdd} />
+            stock > 0 ? (<ItemCount stock={stock} onAdd={handleOnAdd} />) : (<Chip variant="bordered" className="text-default-500"> Sin Stock </Chip>) 
           )}
         </CardFooter>
       </Card>
