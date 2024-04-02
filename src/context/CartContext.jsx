@@ -14,7 +14,7 @@ export const CartProvider =({children})=> {
       if(!isInCart(productToAdd.id)){
         setCart(prev => [... prev, productToAdd])
       }else{
-        console.error("el producto ya está en el carrito")
+        alert("el producto ya está en el carrito")
       }
     }
     
@@ -29,6 +29,7 @@ export const CartProvider =({children})=> {
   
     const eraseItem = (id) => {
       const updatedCart = cart.filter(prod => prod.id !== id)
+      alert("el producto ha sido eliminado del carrito")
       setCart(updatedCart)
     }
 

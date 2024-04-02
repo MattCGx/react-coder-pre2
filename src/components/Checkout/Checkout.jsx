@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Input } from "@nextui-org/react";
+import { query, collection, where, documentId, getDocs, writeBatch, addDoc} from "firebase/firestore";
+import { db } from "../../services/FirebaseDB/firebaseConfig.js"
 
 const Checkout = () => {
 
@@ -8,9 +10,10 @@ const Checkout = () => {
     const [buyerPhone, setbuyerPhone] = useState("");
     const [buyerEmail, setbuyerEmail] = useState("");
     const [buyerAdress, setbuyerAdress] = useState("");
-    const { cart, totalPrice} = useContext(CartContext)
+    const { cart, totalPrice, eraseCart} = useContext(CartContext)
 
-    const createOrder = () => {
+    const createOrder = async () => {
+      try {
         const objOrder = {
             buyerData: {
                 buyerName: buyerName,
@@ -19,8 +22,47 @@ const Checkout = () => {
                 buyerAdress: buyerAdress
             },
             items: cart,
-            total: totalPrice,
+            total: totalPrice
         }
+
+        const batch = writeBatch(db)
+        const outOfStock = []
+        const cartIds = cart.map(prod => prod.id) 
+
+        const productsInCart = query(collection(db, "products"), where(documentId(), "in", cartIds))
+
+        const querySnapshot = await getDocs(productsInCart)
+        const { docs } = querySnapshot
+
+        docs.forEach(doc => {
+
+          const data = doc.data()
+          const stockProductDB = data.stock
+
+          const productIncart = cart.find(product => product.id === doc.id)
+          const productIncartQuantity = productIncart.quantity
+
+          if (stockProductDB >= productIncartQuantity ){
+              batch.update(doc.ref, {stock: stockProductDB - productIncartQuantity})
+          } else {
+              outOfStock.push({id: doc.id, ... data})
+          }
+        })
+
+        if (outOfStock.length === 0) {
+           batch.commit()
+           const orderCollection = collection(db, "orders")
+           const { id } = await addDoc(orderCollection, objOrder)            
+           alert(`se genero la orden ${id}`)
+           eraseCart()
+        }else {
+            alert("hay productos sin stock")
+        }
+
+      }
+      catch(error){
+        alert("Oops! ocurrio un error al procesar la orden")
+      }
     }
 
 
