@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-//import {Spacer} from "@nextui-org/react";
 import CartContainer from "../CartContainer/CartContainer";
 import CartEmpty from "../CartEmpty/CartEmpty";
 

@@ -39,6 +39,10 @@ p {
   @apply bg-transparent text-white border-2 border-red-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-red-800 hover:text-white
 }
 
+.buttonGhostViolet {
+  @apply bg-transparent text-violet-500 border-2 border-violet-500 px-4 py-2 rounded-[12px] hover:opacity-80 hover:bg-violet-400 hover:text-white
+}
+
 .cardItemCart {
   
   @apply bg-slate-600 rounded-md hover:shadow-md hover:shadow-slate-400

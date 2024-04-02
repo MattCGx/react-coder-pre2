@@ -1,9 +1,9 @@
-import { Card, CardFooter, CardBody, Image,} from "@nextui-org/react";
+import { Card, CardFooter, CardBody, Image, Chip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 
-const Item = ({id, model, brand, price, img}) => {
+const Item = ({ id, model, brand, price, img, stock }) => {
   return (
-    <Card shadow="sm">
+    <Card className="hover:shadow-slate-400 hover:shadow">
       <CardBody className="overflow-visible p-0">
         <Image
           isZoomed
@@ -21,12 +21,19 @@ const Item = ({id, model, brand, price, img}) => {
         </b>
       </CardFooter>
       <CardFooter className="text-small justify-around">
-        <p className="text-default-500">${price}</p>
-        <Link to={`/item/${id}`}>
-        <button
-            className="buttonGhostGreen text-tiny py-1 px-2"
-          >Ver Detalle
-          </button>
+        {stock > 0 ? (
+          <p className="text-default-500">${price}</p>
+        ) : (
+          <Chip variant="bordered" className="text-default-500">
+            {" "}
+            Sin Stock{" "}
+          </Chip>
+        )}
+        <Link
+          to={`/item/${id}`}
+          className="buttonGhostGreen text-tiny py-1 px-2"
+        >
+          Ver Detalle
         </Link>
       </CardFooter>
     </Card>
@@ -34,4 +41,3 @@ const Item = ({id, model, brand, price, img}) => {
 };
 
 export default Item;
-

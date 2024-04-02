@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { ItemListSkeleton } from "../skeletons/ItemListSkeleton";
+import { Spacer } from "@nextui-org/react";
 import { getDocs, collection, query, where} from "firebase/firestore";
 import { db } from "../../services/FirebaseDB/firebaseConfig";
+
 
 const ItemListContainer = ({ greeting, greetingFiltro }) => {
   const [products, setProducts] = useState([])
@@ -34,7 +36,8 @@ const ItemListContainer = ({ greeting, greetingFiltro }) => {
 
   return (
     <main>
-      <h1 className="text-center text-cyan-400 text-2xl">{!categoryId ? greeting:`${greetingFiltro}${categoryId}`}</h1>
+      <h1 className="text-center text-cyan-400 text-4xl pt-4 uppercase">{!categoryId ? greeting:`${greetingFiltro}${categoryId}`}</h1>
+      <Spacer y={22}/>
       <ItemList products={products}/>
     </main>
   );

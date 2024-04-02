@@ -20,7 +20,7 @@ const App = () => {
         <NavbarContainer />
         <Routes>
           <Route path="/" element={<ItemListContainer greeting={"Bienvenido a MCGX 3D"} />}/>
-          <Route path="/category/:categoryId" element={<ItemListContainer greetingFiltro={"Productos en la categoria: "} />}/>
+          <Route path="/category/:categoryId" element={<ItemListContainer greetingFiltro={"Categoría: "} />}/>
           <Route path="/item/:itemId" element={<ItemDetailContainer />}/>
           <Route path="/cart" element={<Cart />}/>
           <Route path="/checkout" element={<Checkout />}/>

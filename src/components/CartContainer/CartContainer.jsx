@@ -14,7 +14,7 @@ const CartContainer = () => {
         {cart.map((product) => {
           return (
             <div key={product.id} className="flex flex-col my-2">
-              <CardBody className="flex flex-row justify-between w-3/4 cardItemCart py-2">
+              <CardBody className="flex flex-row justify-between w-3/4 place-self-center cardItemCart py-2">
                 <p>
                   {product.brand} {product.model}
                 </p>

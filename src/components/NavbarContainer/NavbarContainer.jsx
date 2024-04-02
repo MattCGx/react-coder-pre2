@@ -4,7 +4,7 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
-import CartWidget from "../CartWidget/CartWidget"; 
+import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 
 const NavbarContainer = () => {
@@ -17,24 +17,33 @@ const NavbarContainer = () => {
       </NavbarBrand>
       <NavbarContent className="flex gap-4" justify="center">
         <NavbarItem>
-          <Link to="/category/Impresoras" className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50">
-              Impresoras
+          <Link
+            to="/category/Impresoras"
+            className="buttonGhostViolet hover:shadow-md hover:shadow-indigo-500/50"
+          >
+            Impresoras
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/category/Insumos" className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50">
-              Insumos
+          <Link
+            to="/category/Insumos"
+            className="buttonGhostViolet hover:shadow-md hover:shadow-indigo-500/50"
+          >
+            Insumos
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/category/repuestos" className="buttonGhostBlue hover:shadow-lg hover:shadow-indigo-500/50">           
-              Repuestos           
+          <Link
+            to="/category/repuestos"
+            className="buttonGhostViolet hover:shadow-md hover:shadow-indigo-500/50"
+          >
+            Repuestos
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <CartWidget/>
+          <CartWidget />
         </NavbarItem>
       </NavbarContent>
     </Navbar>
