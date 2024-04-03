@@ -32,7 +32,7 @@ const CartContainer = () => {
             icon: "error",
             color: "red",
             background: "#27272AF7",
-            title: "¡Porducto Eliminado!",
+            title: "¡Producto Eliminado!",
             showConfirmButton: false,
             timer: 1000,
           });
@@ -42,7 +42,7 @@ const CartContainer = () => {
             icon: "success",
             color: "green",
             background: "#27272AF7",
-            title: "¡Porducto no Eliminado!",
+            title: "¡Producto no Eliminado!",
             showConfirmButton: false,
             timer: 1000,
           });
@@ -74,7 +74,7 @@ const CartContainer = () => {
             icon: "error",
             color: "red",
             background: "#27272AF7",
-            title: "¡Porductos eliminados!",
+            title: "¡Productos eliminados!",
             showConfirmButton: false,
             timer: 1000,
           });
@@ -84,7 +84,7 @@ const CartContainer = () => {
             icon: "success",
             color: "green",
             background: "#27272AF7",
-            title: "¡Porductos no eliminados!",
+            title: "¡Productos no eliminados!",
             showConfirmButton: false,
             timer: 1000,
           });
