@@ -29,8 +29,8 @@ const CartContainer = () => {
       }).then((resp) => {
         if (resp.isConfirmed) {
           Swal.fire({
-            icon: "success",
-            color: "white",
+            icon: "error",
+            color: "red",
             background: "#27272AF7",
             title: "¡Porducto Eliminado!",
             showConfirmButton: false,
@@ -39,8 +39,8 @@ const CartContainer = () => {
         eraseItem(product.id)
         }else {
           Swal.fire({
-            icon: "error",
-            color: "white",
+            icon: "success",
+            color: "green",
             background: "#27272AF7",
             title: "¡Porducto no Eliminado!",
             showConfirmButton: false,
@@ -71,8 +71,8 @@ const CartContainer = () => {
       }).then((resp) => {
         if (resp.isConfirmed) {
           Swal.fire({
-            icon: "success",
-            color: "white",
+            icon: "error",
+            color: "red",
             background: "#27272AF7",
             title: "¡Porductos eliminados!",
             showConfirmButton: false,
@@ -81,8 +81,8 @@ const CartContainer = () => {
         eraseCart();
         }else {
           Swal.fire({
-            icon: "error",
-            color: "white",
+            icon: "success",
+            color: "green",
             background: "#27272AF7",
             title: "¡Porductos no eliminados!",
             showConfirmButton: false,
