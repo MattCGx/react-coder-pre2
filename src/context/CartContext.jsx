@@ -29,7 +29,6 @@ export const CartProvider =({children})=> {
   
     const eraseItem = (id) => {
       const updatedCart = cart.filter(prod => prod.id !== id)
-      alert("el producto ha sido eliminado del carrito")
       setCart(updatedCart)
     }
 
@@ -65,7 +64,7 @@ export const CartProvider =({children})=> {
 
    return (
 
-    <CartContext.Provider value={{cart, addItem, totalQuantity, eraseCart, eraseItem, totalPrice}}>
+    <CartContext.Provider value={{cart, addItem, totalQuantity, eraseCart, eraseItem, totalPrice, isInCart}}>
         {children}
     </CartContext.Provider>
    ) 

@@ -3,9 +3,97 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import { Card, CardBody, Chip, Tooltip } from "@nextui-org/react";
 import trash from "./assets/trash.svg";
+import Swal from "sweetalert2";
 
 const CartContainer = () => {
   const { cart, eraseItem, eraseCart, totalPrice } = useContext(CartContext);
+
+  const confirmErase = (product) => {
+    Swal.fire(
+      {
+    title: `¿Estás seguro que deseas eliminar ${product.brand} ${product.model} del carrito?`,
+    icon: "warning",
+    color: "white",
+    background: "#27272A",
+    showCancelButton: true,
+    buttonsStyling: false,
+    customClass: 
+    {
+      confirmButton: "buttonGhostGreen mx-2",
+      cancelButton: "buttonGhostRed mx-2"
+    },
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+    cancelButtonColor: "green",
+    confirmButtonColor: "red",
+      }).then((resp) => {
+        if (resp.isConfirmed) {
+          Swal.fire({
+            icon: "success",
+            color: "white",
+            background: "#27272AF7",
+            title: "¡Porducto Eliminado!",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        eraseItem(product.id)
+        }else {
+          Swal.fire({
+            icon: "error",
+            color: "white",
+            background: "#27272AF7",
+            title: "¡Porducto no Eliminado!",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      });
+  }
+
+  const confirmEraseCart = () => {
+    Swal.fire(
+      {
+    title: `¿Estás seguro que deseas eliminar todos los productos del carrito?`,
+    icon: "warning",
+    color: "white",
+    background: "#27272A",
+    showCancelButton: true,
+    buttonsStyling: false,
+    customClass: 
+    {
+      confirmButton: "buttonGhostGreen mx-2",
+      cancelButton: "buttonGhostRed mx-2"
+    },
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+    cancelButtonColor: "green",
+    confirmButtonColor: "red",
+      }).then((resp) => {
+        if (resp.isConfirmed) {
+          Swal.fire({
+            icon: "success",
+            color: "white",
+            background: "#27272AF7",
+            title: "¡Porductos eliminados!",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        eraseCart();
+        }else {
+          Swal.fire({
+            icon: "error",
+            color: "white",
+            background: "#27272AF7",
+            title: "¡Porductos no eliminados!",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      });
+  }
+
+
+  
 
   return(
   <section>
@@ -35,7 +123,7 @@ const CartContainer = () => {
                 >
                   <button
                     className="buttonErase font-bold"
-                    onClick={() => eraseItem(product.id)}
+                    onClick={() => confirmErase(product)}
                   >
                     <img src={trash} />
                   </button>
@@ -52,7 +140,7 @@ const CartContainer = () => {
           TOTAL: ${totalPrice}
         </CardBody>
       </Card>
-      <button className="buttonGhostRed mx-2" onClick={() => eraseCart()}>
+      <button className="buttonGhostRed mx-2" onClick={() => confirmEraseCart()}>
         Vaciar Carrito
       </button>
       <Link className="buttonGhostGreen mx-2" to="/checkout">

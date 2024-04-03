@@ -13,7 +13,11 @@ import {
 } from "firebase/firestore";
 import { db } from "../../services/FirebaseDB/firebaseConfig.js";
 import { CheckoutLoader } from "../CheckoutLoader/CheckoutLoader.jsx";
-import {CheckoutOrder} from "../CheckoutOrder/CheckoutOrder.jsx"
+import { CheckoutOrder } from "../CheckoutOrder/CheckoutOrder.jsx";
+import Swal from "sweetalert2";
+
+
+
 
 const Checkout = () => {
   const [buyerName, setbuyerName] = useState("");
@@ -28,7 +32,12 @@ const Checkout = () => {
     if (buyerName && buyerPhone && buyerEmail && buyerAdress) {
       createOrder();
     } else {
-      alert("Debe completar los datos de contacto primero");
+      Swal.fire({
+        title: `¡Debes completar todos los datos de contacto antes de continuar!`,
+        icon: "error",
+        color: "white",
+        background: "#27272A",
+      });
     }
   };
 
@@ -79,14 +88,43 @@ const Checkout = () => {
         batch.commit();
         const orderCollection = collection(db, "orders");
         const { id } = await addDoc(orderCollection, objOrder);
-        alert(`se genero la orden ${id}`);
+        Swal.fire(
+          {
+        title: `Orden Exitosa!`,
+        toast: "true",
+        icon: "success",
+        position: "top-end",
+        showConfirmButton: false,
+        color: "white",
+        background: "#27272A",
+        timer:1500,
+          });
         eraseCart();
         setOrderId(id);
       } else {
-        alert("hay productos sin stock");
+        Swal.fire(
+          {
+        title: `¡Oh no!
+        ¡Tu orden no pudo completarse debido a que hay productos fuera de stock en tu carrito!`,
+        icon: "error",
+        color: "white",
+        showConfirmButton: false,
+        timer: 2000,
+        background: "#27272A",
+          });
       }
     } catch (error) {
-      alert("Oops! ocurrio un error al procesar la orden");
+      Swal.fire(
+        {
+      title: `Oops! Ocurrió un error inesperado`,
+      toast: "true",
+      icon: "error",
+      position: "bottom-end",
+      showConfirmButton: false,
+      color: "red",
+      background: "#27272A",
+      timer:1000,
+        });
     } finally {
       setLoading(false);
     }
@@ -97,7 +135,7 @@ const Checkout = () => {
   }
 
   if (orderId) {
-    return <CheckoutOrder id={orderId}/>
+    return <CheckoutOrder id={orderId} />;
   }
 
   return (
@@ -138,7 +176,7 @@ const Checkout = () => {
 
       <button
         className="buttonGhostGreen w-fit justify-self-center my-5"
-        onClick={checkOrder}
+        onClick={() => checkOrder()}
       >
         Generar orden de compra
       </button>
