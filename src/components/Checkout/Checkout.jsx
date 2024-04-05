@@ -15,6 +15,7 @@ import { db } from "../../services/FirebaseDB/firebaseConfig.js";
 import { CheckoutLoader } from "../CheckoutLoader/CheckoutLoader.jsx";
 import { CheckoutOrder } from "../CheckoutOrder/CheckoutOrder.jsx";
 import Swal from "sweetalert2";
+import CheckoutOrderList from "../chekoutOrderList/CheckoutOrderList.jsx";
 
 
 
@@ -144,10 +145,12 @@ const Checkout = () => {
 
   return (
     <section className="grid place-content-center mt-5">
-      <h1 className="text-2xl my-4">
+      <h1 className="text-2xl my-4"> RESUMEN DE TU ORDEN</h1>
+      <CheckoutOrderList/>
+      <h2 className="text-2xl my-4">
         Ingresa tus datos para finalizar la orden de compra
-      </h1>
-      <div className="grid gap-4 w-auto">
+      </h2>
+      <div className="grid place-self-center gap-4 w-3/4">
         <Input
           isRequired
           isClearable
@@ -195,6 +198,8 @@ const Checkout = () => {
       >
         Generar orden de compra
       </button>
+
+      
     </section>
   );
 };
