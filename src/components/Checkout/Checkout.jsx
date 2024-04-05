@@ -37,9 +37,9 @@ const Checkout = () => {
       createOrder();
     } else {
       Swal.fire({
-        title: `¡Debes completar todos los datos de contacto antes de continuar!`,
+        title: `¡Debes completar todos los datos de contacto correctamente antes de continuar!`,
         icon: "error",
-        color: "white",
+        color: "red",
         background: "#27272A",
       });
     }
