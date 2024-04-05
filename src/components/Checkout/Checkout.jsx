@@ -22,14 +22,18 @@ import Swal from "sweetalert2";
 const Checkout = () => {
   const [buyerName, setbuyerName] = useState("");
   const [buyerPhone, setbuyerPhone] = useState("");
-  const [buyerEmail, setbuyerEmail] = useState("");
   const [buyerAdress, setbuyerAdress] = useState("");
+  const [buyerEmail, setbuyerEmail] = useState("");
+  const [buyerEmail2, setbuyerEmail2] = useState("");
+  
+
+
   const [loading, setLoading] = useState(false);
   const [orderId, setOrderId] = useState(null);
   const { cart, totalPrice, eraseCart } = useContext(CartContext);
 
   const checkOrder = () => {
-    if (buyerName && buyerPhone && buyerEmail && buyerAdress) {
+    if (buyerName && buyerPhone && buyerEmail && buyerAdress && buyerEmail2 === buyerEmail) {
       createOrder();
     } else {
       Swal.fire({
@@ -146,32 +150,43 @@ const Checkout = () => {
       <div className="grid gap-4 w-auto">
         <Input
           isRequired
+          isClearable
           label="Nombre y apellido"
-          placeholder="Marcos Zuckerberg"
           value={buyerName}
           onValueChange={setbuyerName}
         />
         <Input
           isRequired
+          isClearable
           label="Teléfono"
-          placeholder="01112345678"
           value={buyerPhone}
           onValueChange={setbuyerPhone}
         />
         <Input
           isRequired
+          isClearable
+          label="Dirección"
+          value={buyerAdress}
+          onValueChange={setbuyerAdress}
+        />
+        <Input
+          isRequired
+          isClearable
           label="Email"
-          placeholder="marquitos@reptilianarmy.com"
           value={buyerEmail.toLowerCase()}
           onValueChange={setbuyerEmail}
         />
         <Input
           isRequired
-          label="Dirección"
-          placeholder="La Comarca 4329"
-          value={buyerAdress}
-          onValueChange={setbuyerAdress}
+          isClearable
+          isInvalid = {buyerEmail === buyerEmail2 ? "false" : "true"}
+          errorMessage={buyerEmail === buyerEmail2 ? null:"Las direcciones de correo electrónico no coinciden"}
+          color={buyerEmail === buyerEmail2 ? "success" : "danger"}
+          label="Repite tu Email"
+          value={buyerEmail2.toLowerCase()}
+          onValueChange={setbuyerEmail2}
         />
+        
       </div>
 
       <button
