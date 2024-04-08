@@ -2,7 +2,7 @@ import {Card, Skeleton} from "@nextui-org/react";
 
 export const ItemListSkeleton = () => {
   return (
-    <section className="grid grid-flow-col gap-4 mt-3 md:px-3 pb-4">
+    <section className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-3 md:px-3 pb-4">
         <Card className="w-[300px] space-y-5 p-4" radius="lg">
           <Skeleton className="rounded-lg">
             <div className="h-[250px] rounded-lg bg-default-300"></div>

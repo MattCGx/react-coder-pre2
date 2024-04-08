@@ -15,7 +15,7 @@ import { db } from "../../services/FirebaseDB/firebaseConfig.js";
 import { CheckoutLoader } from "../CheckoutLoader/CheckoutLoader.jsx";
 import { CheckoutOrder } from "../CheckoutOrder/CheckoutOrder.jsx";
 import Swal from "sweetalert2";
-import CheckoutOrderList from "../chekoutOrderList/CheckoutOrderList.jsx";
+import CheckoutOrderList from "../ChekoutOrderList/CheckoutOrderList.jsx"
 
 
 
