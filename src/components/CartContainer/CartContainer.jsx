@@ -96,16 +96,16 @@ const CartContainer = () => {
             return (
               <div key={product.id} className="flex flex-col my-2">
                 <CardBody className="flex flex-row justify-between w-3/4 place-self-center cardItemCart py-2">
-                  <p>
+                  <div>
                     {product.brand} {product.model}
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     Precio Unitario: <Chip>${product.price}</Chip> - Cantidad:
                     <Chip> {product.quantity} Unidades</Chip>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     Subtotal: <Chip>${product.quantity * product.price}</Chip>
-                  </p>
+                  </div>
                   <Tooltip
                     delay={1000}
                     closeDelay={0}
