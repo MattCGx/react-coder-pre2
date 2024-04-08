@@ -28,7 +28,7 @@ const CheckoutOrderList = () => {
             </div>
           );
         })}
-        <CardFooter className="flex flex-row place-self-center cardItemCart bg-violet-400 text-slate-600 text-2xl font-bold py-2">
+        <CardFooter className="flex flex-row place-self-center cardItemCart bg-violet-400 text-slate-600 text-2xl font-bold py-2 justify-center">
           TOTAL: ${totalPrice}
         </CardFooter>
       </Card>

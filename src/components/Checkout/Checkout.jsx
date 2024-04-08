@@ -46,6 +46,7 @@ const Checkout = () => {
     }
   };
 
+
   const createOrder = async () => {
     try {
       setLoading(true);
@@ -175,6 +176,8 @@ const Checkout = () => {
         <Input
           isRequired
           isClearable
+          isInvalid = {!buyerEmail.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i)}
+          errorMessage= {!buyerEmail.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i) && "Por favor ingrese un email válido" }
           label="Email"
           value={buyerEmail.toLowerCase()}
           onValueChange={setbuyerEmail}
